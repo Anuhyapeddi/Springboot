@@ -31,5 +31,12 @@ There are three techniques to handle the dependency Injection (DI)
 2. Setter Injection -  we can create the setter methods for it and do the setter injection
 3. field Injection -
 
+Most of the time we don't need all the objects in the class, we only need only few objects. In that case we need to configure in Config file. (that means we need to talk to the framework by configure in the file). 
+
+Springboot - spring 
+Convention over configuration
+springboot is more like standard one, when you initize springboot, you get all the unused dependency also.
+Whereas in Spring, we only get what you have installed but you need to configure everything everything by your self.
+
 
 Dependency Injection
