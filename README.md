@@ -51,9 +51,18 @@ whenever I run this line of code, it create and runs this container inside the J
 
 Spring does not create object of all classes, it only creates the object of those classes which have @Component Annotation.
 
+```java
+@Component
+```
 Autowiring
 
 Primary
 
 Qualifier
+
+Springboot MVC
+
+
+
+
 
