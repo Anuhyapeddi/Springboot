@@ -2,7 +2,7 @@
 
 cheatsheet for spring framework
 
-before going to 
+Before going to Springboot framework. Some things to keep in mind.
 
 Framework - It is a reusable set of tools and elements that provide a base for developing applications.
 
@@ -40,5 +40,14 @@ Convention over configuration
 springboot is more like standard one, when you initize springboot, you get all the unused dependency also.
 Whereas in Spring, we only get what you have installed but you need to configure everything everything by your self.
 
-
 Dependency Injection
+
+Spring has it's own container inside the JVM. We call it as IOC container.
+SpringApplication.run(LibraryApplication.class, args);
+whenever I run this line of code, it create and runs this container inside the JVM.
+
+Spring does not create object of all classes, it only creates the object of those classes which have @Component Annotation.
+
+Autowiring
+
+
