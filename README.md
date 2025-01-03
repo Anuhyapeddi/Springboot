@@ -11,9 +11,10 @@ Spring framework - It is an open-source framework that helps Java developers bui
 Servlets - It is a Java class that runs on a Java-enabled server to extend the capabilities of web applications
 
 different layers 
-* accept the client request -  controller
-* do the business logic - service
-* connect to the database - repositories
+* which accepts the request from the client and sends response to the client  -  Controller
+* if the controller wants data, it will not ask from database. It will ask from Service layer
+* do the business logic - Service Layer
+* connect to the database - Repositories
 
 here everything is a class, if you want to work with service inside the controller, then we need to create object of the service inside the controller.
 
@@ -62,7 +63,61 @@ Qualifier
 
 Springboot MVC
 
+### Difference between @Controller and @RestController
 
+```java
+// @Controller checks for the "Welcome to roses and tulips!!" and it sends the page "Welcome to roses and tulips!!"
+// in this case we don't have any page. So, it throws us an error
 
+@Controller
+public class HomeController {
+
+    @RequestMapping("/")
+    public String greet(){
+        return "Welcome to roses and tulips!!";
+    }
+
+    @RequestMapping("/about")
+    public String about(){
+        return "Here we sell traditional jwellery!!";
+    }
+}
+```
+
+```java
+// In @RestController it sends the data
+
+@RestController
+public class HomeController {
+
+    @RequestMapping("/")
+    public String greet(){
+        return "Welcome to roses and tulips!!";
+    }
+
+    @RequestMapping("/about")
+    public String about(){
+        return "Here we sell traditional jwellery!!";
+    }
+}
+```
+
+```java
+// by default @RequestMapping is a GET call
+
+```
+### PathVarible
+PathVariable is used to extract values from the URI path and bind them to method parameters in your controller methods. This is particularly useful when building RESTful web services where parts of the URL can be dynamically specified
+
+```java
+@RequestMapping("/products/{prodID}")
+    public Product getProductById(@PathVariable int prodID){
+        return service.getProductById(prodID);
+    }
+```
+Jackson library is responsible for conversion from JSON to object and object to JSON.
+
+@RequestBody
+This is responsible for getting data in the request and sending data as a reference
 
 
