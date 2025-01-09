@@ -18,7 +18,7 @@ different layers
 
 here everything is a class, if you want to work with service inside the controller, then we need to create object of the service inside the controller.
 
-### IOC - Inversion of Control
+## IOC - Inversion of Control
 gererally we create the object, but in IOC we are giving power to someone else to create the object.
 IOC is just the philosify, but we need the actual technique to do that. Here comes the concept called Dependency Injection.
 Dependency Injection is the actual implementation of IOC.
@@ -36,10 +36,10 @@ There are three techniques to handle the dependency Injection (DI)
 
 Most of the time we don't need all the objects in the class, we only need only few objects. In that case we need to configure in Config file. (that means we need to talk to the framework by configure in the file). 
 
-Springboot - spring 
-Convention over configuration
-springboot is more like standard one, when you initize springboot, you get all the unused dependency also.
-Whereas in Spring, we only get what you have installed but you need to configure everything everything by your self.
+* Springboot - spring 
+* Convention over configuration
+* springboot is more like standard one, when you initize springboot, you get all the unused dependency also.
+* Whereas in Spring, we only get what you have installed but you need to configure everything everything by your self.
 
 Dependency Injection
 
@@ -119,5 +119,133 @@ Jackson library is responsible for conversion from JSON to object and object to 
 
 @RequestBody
 This is responsible for getting data in the request and sending data as a reference
+
+Make sure you always follow DRY principle. 
+DRY - Do not Repeat Yourself.
+
+## Spring Data JPA
+
+JPA - Java Persistence API. JPA is a Standard.
+
+ORM - Object Relational Mapping
+
+* class name - table name
+* member variables - column names
+* object variables(data from client) - rows
+
+if you want to create a table for particular class
+then that class should have annotation @Entity
+
+For every entity we should define a primary key. 
+That can be defined by @Id
+
+```java
+@Component
+@Entity   // defining entity by annotation
+public class Product {
+
+    @Id
+    private int prodId;   //primary key
+    private String category;
+    private String prodName;
+    private int price;
+    private boolean available;
+
+    public Product() {
+    }
+```
+@CrossOrigin
+
+"CORS" stands for "Cross-Origin Resource Sharing" - it refers to an error that occurs when a web application tries to access data from a different domain without the necessary permissions, essentially a security feature that prevents unauthorized access to resources across different websites.
+
+it can be solved by adding @CrossOrigin annotation in the backend code.
+
+```java
+@Component
+@CrossOrigin   // @CrossOrigin annotation is added to avoid CORS error
+@Entity
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int prodId;
+    private String category;
+    private String prodName;
+    private String prodDesc;
+    private BigDecimal price;
+    private boolean available;
+    private int quantity;
+```
+jackson library is used to convert one formate to another formate.
+
+@ResponseEntity is resposible for sending the status code.
+
+There are multiple ways to store the image. 
+* we can store images on the cloud and use the link 
+* or you can directly store image url in database
+
+whenever we are storing a large object like byte, we have to use @Lob annotation.
+Where Lob refer to large object
+
+```java
+@Component
+@CrossOrigin
+@Entity
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int prodId;
+    private String category;
+    private String prodName;
+    private String prodDesc;
+    private BigDecimal price;
+    private boolean available;
+    private int quantity;
+    private String imageName;
+    private String imageType;
+    @Lob        // large object
+    private byte[] imageData;
+```
+Difference between @RequestBody and @RequestPart
+
+* @RequestBody - It sends the entire request
+* @RequestPart - It sends just a part of the request
+
+MultipartFile - A representation of an uploaded file received in a multipart request
+
+JPQL (Java Persistence Query Language)
+
+* JPQL is used to write custom query
+* Instead of table name we use class name
+* Instead of column name we use member variable name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
